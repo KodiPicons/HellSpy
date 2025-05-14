@@ -24,7 +24,7 @@ const builder = new addonBuilder(manifest);
 
 builder.defineStreamHandler(async ({ type, id }) => {
     const imdbId = id.replace("tt", "");
-    const url = \`https://www.hellspy.to/search?query=\${imdbId}\`;
+    const url = `https://www.hellspy.to/search?query=${imdbId}`;
 
     try {
         const response = await axios.get(url);
@@ -59,7 +59,8 @@ builder.defineStreamHandler(async ({ type, id }) => {
 
 builder.defineCatalogHandler(async ({ type, id, extra }) => {
     const searchQuery = extra.search;
-    const url = \`https://www.hellspy.to/search?query=\${encodeURIComponent(searchQuery)}\`;
+    const url = `https://www.hellspy.to/search?query=${imdbId}`;
+
 
     try {
         const response = await axios.get(url);
