@@ -88,5 +88,5 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
     }
 });
 
-// Exportovanie ako funkcia (server)
+// Exportuj server ako funkciu
 module.exports = builder.getInterface();
