@@ -72,11 +72,11 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
             const link = $(el).find("a").attr("href");
 
             metas.push({
-                id: \`hellspy-\${Buffer.from(title).toString('base64')}\`,
+                id: `hellspy-${Buffer.from(title).toString('base64')}`,
                 name: title,
                 type: "movie",
                 poster: "https://www.hellspy.to/images/logo.png",
-                description: \`Nájdené na Hellspy: \${title}\`,
+                description: `Nájdené na Hellspy: ${title}`,
             });
         });
 
