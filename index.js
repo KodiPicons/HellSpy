@@ -88,9 +88,9 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
     }
 });
 
+    
 const interface = builder.getInterface();
 
-module.exports = async (req, res) => {
-    const handler = await interface(req, res);
-    return handler;
+module.exports = interface;
+
 };
