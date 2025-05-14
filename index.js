@@ -38,7 +38,7 @@ builder.defineStreamHandler(async ({ type, id }) => {
 
             files.push({
                 title,
-                url: `https://www.hellspy.to\${link}`,
+                url: `https://www.hellspy.to${link}`,
                 name: `${title} (${size})`,
                 behaviorHints: {
                     notWebReady: true
@@ -46,11 +46,13 @@ builder.defineStreamHandler(async ({ type, id }) => {
             });
         });
 
-        return { streams: files.map(file => ({
-            name: file.name,
-            title: file.title,
-            url: file.url
-        })) };
+        return {
+            streams: files.map(file => ({
+                name: file.name,
+                title: file.title,
+                url: file.url
+            }))
+        };
     } catch (e) {
         console.error("Stream error:", e.message);
         return { streams: [] };
@@ -59,8 +61,7 @@ builder.defineStreamHandler(async ({ type, id }) => {
 
 builder.defineCatalogHandler(async ({ type, id, extra }) => {
     const searchQuery = extra.search;
-    const url = `https://www.hellspy.to/search?query=${imdbId}`;
-
+    const url = `https://www.hellspy.to/search?query=${encodeURIComponent(searchQuery)}`;
 
     try {
         const response = await axios.get(url);
@@ -87,4 +88,9 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
     }
 });
 
-module.exports = builder.getInterface();
+const interface = builder.getInterface();
+
+module.exports = async (req, res) => {
+    const handler = await interface(req, res);
+    return handler;
+};
