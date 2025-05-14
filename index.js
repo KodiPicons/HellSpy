@@ -92,5 +92,3 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
 const interface = builder.getInterface();
 
 module.exports = interface;
-
-};
