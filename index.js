@@ -39,7 +39,7 @@ builder.defineStreamHandler(async ({ type, id }) => {
             files.push({
                 title,
                 url: `https://www.hellspy.to\${link}`,
-                name: \`\${title} (\${size})\`,
+                name: `${title} (${size})`,
                 behaviorHints: {
                     notWebReady: true
                 }
