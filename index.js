@@ -88,7 +88,5 @@ builder.defineCatalogHandler(async ({ type, id, extra }) => {
     }
 });
 
-    
-const interface = builder.getInterface();
-
-module.exports = interface;
+// Exportovanie ako funkcia (server)
+module.exports = builder.getInterface();
